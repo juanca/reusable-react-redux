@@ -7,5 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Juan Carlos Medina",
+  "contributors": [
+    {
+      "name": "Juan Carlos Medina",
+      "email": "juanca.med@gmail.com"
+    }
+  ],
   "license": "MIT"
 }
