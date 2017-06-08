@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+ssh://git@github.com/juanca/reusable-react-redux.git"
   },
+  "bugs": {
+    "url": "https://github.com/juanca/reusable-react-redux/issues"
+  },
+  "homepage": "https://github.com/juanca/reusable-react-redux#readme",
   "author": "Juan Carlos Medina",
   "contributors": [
     {
