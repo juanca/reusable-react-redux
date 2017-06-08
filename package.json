@@ -28,5 +28,8 @@
       "email": "juanca.med@gmail.com"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  }
 }
