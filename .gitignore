@@ -1,2 +1,5 @@
 # Never commit OS X specific files
 .DS_Store
+
+# Never commit dependencies
+node_modules/

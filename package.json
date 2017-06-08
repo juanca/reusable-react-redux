@@ -1,0 +1,11 @@
+{
+  "name": "reusable-react-redux",
+  "version": "0.0.0",
+  "description": "Library to facilitate building reusable react redux components.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Carlos Medina",
+  "license": "MIT"
+}
