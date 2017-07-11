@@ -1,4 +1,5 @@
 /*
+ * Utility method
  * Dig into redux store state given a selector path
  */
 module.exports = function scope(store, selectors) {
