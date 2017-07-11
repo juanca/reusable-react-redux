@@ -1,6 +1,6 @@
 {
   "name": "reusable-react-redux",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library to facilitate building reusable react redux components.",
   "keywords": [
     "reusable",
