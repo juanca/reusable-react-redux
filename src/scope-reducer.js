@@ -1,17 +1,6 @@
+const deepStateMerge = require('./deep-state-merge.js');
 const scope = require('./scope.js');
 
-/*
- * Helper method: return a new state with a specific (deeply nested) state slice modified.
- */
-function setNestedState(state, selectors, nextLocalState) {
-  // In order to set a new deeply nested state
-  // Recursively create new state objects along the selectors path
-  return Object.assign({}, state, {
-    [selectors[0]]: selectors.length === 1 ?
-      nextLocalState :
-      setNestedState(state[selectors[0]], selectors.slice(1), nextLocalState),
-  });
-}
 
 /*
  * Higher-order reducer
@@ -37,6 +26,6 @@ module.exports =  function scopeReducer(reducer) {
     }
 
     // Set new local state on store state
-    return setNestedState(state, action.meta.selectors, nextScopedState);
+    return deepStateMerge(state, action.meta.selectors, nextScopedState);
   };
 }
