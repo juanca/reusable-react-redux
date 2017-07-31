@@ -9,4 +9,13 @@ describe('Reusable React Redux DeepStateMerge', function () {
     expect(newState).not.toBe(originalState);
     expect(newState.a0.a1.foo).toEqual('foo');
   });
+
+  it('creates a new state with a modified state slice', function () {
+    const originalState = { foo: 'foo' };
+    const selectors = [];
+
+    const newState = deepStateMerge(originalState, selectors, { foo: 'foo' })
+    expect(newState).not.toBe(originalState);
+    expect(newState.foo).toEqual('foo');
+  });
 });
