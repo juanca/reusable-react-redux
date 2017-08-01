@@ -2,6 +2,8 @@
 
 Library to facilitate building reusable react redux components.
 
+[![Travis](https://img.shields.io/travis/juanca/reusable-react-redux.svg)]()
+[![npm](https://img.shields.io/npm/dm/reusable-react-redux.svg.svg)]()
 
 ## Why?
 
