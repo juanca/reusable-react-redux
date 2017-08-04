@@ -5,17 +5,17 @@ const scope = require('./scope.js');
 /*
  * Higher-order reducer
  * Pass a specific (deeply nested) state slice into a reducer.
- * State slice is determined by the `meta.selectors` action payload.
+ * State slice is determined by the `meta.statePath` action payload.
  * Modified state slice is set back into overall store state (without mutation).
  */
 module.exports =  function scopeReducer(reducer) {
   return function scopedReducer(state, action) {
-    if (!action.meta || !action.meta.selectors) {
+    if (!action.meta || !action.meta.statePath) {
       return state;
     }
 
     // Get local state for connected component
-    const scopedState = scope(state, action.meta.selectors);
+    const scopedState = scope(state, action.meta.statePath);
 
     // Get new local state for connected component
     const nextScopedState = reducer(scopedState, action);
@@ -26,6 +26,6 @@ module.exports =  function scopeReducer(reducer) {
     }
 
     // Set new local state on store state
-    return deepStateMerge(state, action.meta.selectors, nextScopedState);
+    return deepStateMerge(state, action.meta.statePath, nextScopedState);
   };
 }

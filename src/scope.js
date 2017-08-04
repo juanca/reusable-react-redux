@@ -1,13 +1,13 @@
 /*
  * Utility method
- * Dig into redux store state given a selector path
+ * Dig into redux store state given a state path
  */
-module.exports = function scope(store, selectors) {
-  return selectors.reduce(function (state, selector) {
-    if (Object.prototype.hasOwnProperty.call(state, selector)) {
-      return state[selector];
+module.exports = function scope(store, statePath) {
+  return statePath.reduce(function (state, stateKey) {
+    if (Object.prototype.hasOwnProperty.call(state, stateKey)) {
+      return state[stateKey];
     }
 
-    throw new Error(`Unable to scope store state: ${selector} from ${selectors.join(',')}`);
+    throw new Error(`Unable to scope store state: ${stateKey} from ${statePath.join(',')}`);
   }, store);
 }

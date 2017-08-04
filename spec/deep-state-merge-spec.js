@@ -3,18 +3,18 @@ const deepStateMerge = require('../src/deep-state-merge.js');
 describe('Reusable React Redux DeepStateMerge', function () {
   it('creates a new state with a modified state slice', function () {
     const originalState = { a0: { a1: { foo: 'foo' } } };
-    const selectors = ['a0', 'a1'];
+    const statePath = ['a0', 'a1'];
 
-    const newState = deepStateMerge(originalState, selectors, { foo: 'foo' })
+    const newState = deepStateMerge(originalState, statePath, { foo: 'foo' })
     expect(newState).not.toBe(originalState);
     expect(newState.a0.a1.foo).toEqual('foo');
   });
 
   it('creates a new state with a modified state slice', function () {
     const originalState = { foo: 'foo' };
-    const selectors = [];
+    const statePath = [];
 
-    const newState = deepStateMerge(originalState, selectors, { foo: 'foo' })
+    const newState = deepStateMerge(originalState, statePath, { foo: 'foo' })
     expect(newState).not.toBe(originalState);
     expect(newState.foo).toEqual('foo');
   });
