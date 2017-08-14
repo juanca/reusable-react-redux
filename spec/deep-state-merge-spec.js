@@ -10,7 +10,7 @@ describe('Reusable React Redux DeepStateMerge', function () {
     expect(newState.a0.a1.foo).toEqual('foo');
   });
 
-  it('creates a new state with a modified state slice', function () {
+  it('creates a new (shallow) state with a modified state slice', function () {
     const originalState = { foo: 'foo' };
     const statePath = [];
 
