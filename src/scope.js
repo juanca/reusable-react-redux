@@ -4,7 +4,7 @@
  */
 module.exports = function scope(store, statePath) {
   return statePath.reduce(function (state, stateKey) {
-    if (Object.prototype.hasOwnProperty.call(state, stateKey)) {
+    if (state.hasOwnProperty(stateKey)) {
       return state[stateKey];
     }
 
