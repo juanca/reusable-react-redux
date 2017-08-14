@@ -17,22 +17,28 @@ describe('Reusable React Redux ScopeReducer', function () {
     expect(reducerSpy).toHaveBeenCalledWith(store.a0.a1, action);
   });
 
-  it('returns the same state if the reducer returns the same state', function () {
-    const store = { a0: { a1: { foo: 'foo' } } };
-    const reducerSpy = jasmine.createSpy('reducer').and.returnValue(store.a0.a1);
-    const scopedReducer = scopeReducer(reducerSpy, { meta: { statePath: ['a0', 'a1'] } });
+  describe('when the reducer returns the same state', function () {
+    it('does not mutate the store state', function () {
+      const store = { a0: { a1: { foo: 'foo' } } };
+      const reducerSpy = jasmine.createSpy('reducer').and.returnValue(store.a0.a1);
+      const scopedReducer = scopeReducer(reducerSpy);
+      const action = { meta: { statePath: ['a0', 'a1'] } };
 
-    expect(scopedReducer(store, ['a0', 'a1'])).toBe(store);
+      const newState = scopedReducer(store, action);
+      expect(newState).toBe(store);
+    });
   });
 
-  it('returns a new state if the reducer returns a new state', function () {
-    const store = { a0: { a1: { foo: 'foo' } } };
-    const reducerSpy = jasmine.createSpy('reducer').and.returnValue({ foo: 'foo' });
-    const scopedReducer = scopeReducer(reducerSpy, { meta: { statePath: ['a0', 'a1'] } });
-    const action = { meta: { statePath: ['a0', 'a1'] } };
+  describe('when the reducer returns a new state', function () {
+    it('mutates the store state', function () {
+      const store = { a0: { a1: { foo: 'foo' } } };
+      const reducerSpy = jasmine.createSpy('reducer').and.returnValue({ foo: 'foo' });
+      const scopedReducer = scopeReducer(reducerSpy, { meta: { statePath: ['a0', 'a1'] } });
+      const action = { meta: { statePath: ['a0', 'a1'] } };
 
-    const newState = scopedReducer(store, action)
-    expect(newState).not.toBe(store);
-    expect(newState.a0.a1.foo).toEqual('foo');
+      const newState = scopedReducer(store, action)
+      expect(newState).not.toBe(store);
+      expect(newState.a0.a1.foo).toEqual('foo');
+    });
   });
 });

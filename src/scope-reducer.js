@@ -20,12 +20,7 @@ module.exports =  function scopeReducer(reducer) {
     // Get new local state for connected component
     const nextScopedState = reducer(scopedState, action);
 
-    // Do nothing if state didn't change for connected component
-    if (scopedState === nextScopedState) {
-      return state;
-    }
-
-    // Set new local state on store state
+    // Lazily set new local state on store state
     return deepStateMerge(state, action.meta.statePath, nextScopedState);
   };
 }
