@@ -31,5 +31,8 @@
   "license": "MIT",
   "devDependencies": {
     "jasmine": "^2.6.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.10"
   }
 }
