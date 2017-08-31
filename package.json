@@ -30,6 +30,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "jasmine": "^2.6.0"
+    "jasmine": "^2.6.0",
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "prop-types": ">= 15.5.7"
   }
 }
